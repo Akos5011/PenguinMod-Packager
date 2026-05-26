@@ -2,32 +2,27 @@ name: Fetch Electron
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   update-electron-binary:
     runs-on: ubuntu-latest
     steps:
-      - name: Query latest version
-        id: get-version
+      - name: Download Electron
+        env:
+          DOM: "github.com"
+          REP: "electron/electron"
+          TAG: "v42.2.0"
         run: |
-          LATEST_VERSION=$(curl -s https://github.com | jq -r '.tag_name' | sed 's/v//')
-          echo "Found latest version: $LATEST_VERSION"
-          echo "VERSION=$LATEST_VERSION" >> $GITHUB_OUTPUT
-
-      - name: Download latest binary
-        run: |
-          VERSION="${{ steps.get-version.outputs.VERSION }}"
-          DOWNLOAD_URL="https://github.com{VERSION}/electron-v${VERSION}-win32-x64.zip"
-          echo "Downloading from: $DOWNLOAD_URL"
-          curl -L -o "electron-latest-win32-x64.zip" "$DOWNLOAD_URL"
-
-      - name: Create release
-        uses: softprops/action-gh-release@v1
+          curl -L -o electron-latest-win32-x64.zip https://$DOM/$REP/releases/download/$TAG/electron-$TAG-win32-x64.zip
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
         with:
-          tag_name: "latest"
+          tag_name: "latest-stable"
           name: "Electron"
           body: ""
           files: "electron-latest-win32-x64.zip"
           draft: false
           prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
