@@ -41,13 +41,13 @@ export default {
     sha256: '5f597add1a2b6f13592117cc955111cea8211c13b21165e29c6616f385df5b94',
     estimatedSize: 135854818
   },
-   'electron-win32': {
-    src: 'https://github.com/electron/electron/releases/download/v42.2.0/electron-v42.2.0-win32-x64.zip',
+  'electron-win32': {
+    src: 'https://github.com/Akos5011/PenguinMod-Packager/releases/download/latest-stable/electron-latest-win32-x64.zip',
     sha256: '6e034b748ad5ed9445bd3da4b7d0792ed49556774a541217b507c156b00dd69a',
     estimatedSize: 144267493
   },
   'electron-win64': {
-    src: 'https://github.com/electron/electron/releases/download/v42.2.0/electron-v42.2.0-win32-x64.zip',
+    src: 'https://github.com/Akos5011/PenguinMod-Packager/releases/download/latest-stable/electron-latest-win32-x64.zip',
     sha256: '6e034b748ad5ed9445bd3da4b7d0792ed49556774a541217b507c156b00dd69a',
     estimatedSize: 144267493
   },
