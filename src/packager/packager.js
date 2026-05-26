@@ -571,9 +571,9 @@ const createWindow = (windowOptions) => {
     icon: path.resolve(__dirname, ${JSON.stringify(iconName)}),
     useContentSize: true,
     webPreferences: {
-      sandbox: true,
-      contextIsolation: true,
-      nodeIntegration: false,
+      sandbox: false,
+      contextIsolation: false,
+      nodeIntegration: true,
     },
     show: true,
     width: 480,
