@@ -696,10 +696,12 @@ app.on('web-contents-created', (event, contents) => {
   contents.on('before-input-event', (e, input) => {
     const window = BrowserWindow.fromWebContents(contents);
     if (!window || input.type !== "keyDown") return;
-    if (input.key === 'F11' || (input.key === 'Enter' && input.alt)) {
-      window.setFullScreen(!window.isFullScreen());
+      if (input.key === 'F11' || (input.key === 'Enter' && input.alt)) {
+        window.setFullScreen(!window.isFullScreen());
     } else if (input.key === 'Escape' && window.isFullScreen()) {
-      window.setFullScreen(false);
+        window.setFullScreen(false);
+    } else if (input.key === 'F12' || (input.key === 'I' && input.control && input.shift)) {
+        contents.openDevTools()
     }
   });
 });
